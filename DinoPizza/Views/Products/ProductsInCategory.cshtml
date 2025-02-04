@@ -1,0 +1,23 @@
+﻿@model ProductsListModel
+
+<h1>Продукты в категории</h1>
+
+<div class="product-list">
+    @foreach (var product in Model.PageProducts)
+    {
+        <div class="product-item">
+            <img src="@Url.Content($"~/FileStorage/ProductImages/{product.ImageSrc}")" alt="@product.Name" />
+            <h3>@product.Name</h3>
+            <p>Цена: @product.Price</p>
+            <a href="@Url.Action("ProductDetails", "Products", new { id = product.Id })">Подробнее</a>
+        </div>
+    }
+</div>
+
+<!-- Пагинация -->
+<div class="pagination">
+    @for (int i = 1; i <= Model.PageCount; i++)
+    {
+        <a href="@Url.Action("CategoryProducts", "Products", new { categoryId = Model.CategoryId, page = i })">@i</a>
+    }
+</div>

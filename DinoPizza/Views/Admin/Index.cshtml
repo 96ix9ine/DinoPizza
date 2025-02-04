@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewData["Title"] = "Панель админнистрирования";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="col-9">
+    <a class="btn btn-outline-primary" asp-controller="Admin" asp-action="ManageUsersView">
+        Управление пользователями
+    </a>
+    <a class="btn btn-outline-primary" asp-controller="Admin" asp-action="ManageRolesView">
+        Управление ролями
+    </a>
+</div>

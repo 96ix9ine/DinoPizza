@@ -1,0 +1,34 @@
+﻿@using DinoPizza.BusinessLogic;
+@using DinoPizza.Models;
+@model DinoPizza.Models.Cart
+
+@{
+    var path = Context.Request.Path;
+    var query = Context.Request.QueryString;
+    string pathAndQuery = path + query;
+}
+
+@* @if (Model.TotalQuantity > 0)  *@
+@* { *@
+
+    <div class="modal fade modal-hidden" id="cartModal" tabindex="-1" aria-labelledby="cartModalLabel" aria-hidden="true">
+        <div class="modal-dialog cart-dialog">
+            <div class="modal-content cart-content">
+                <div class="modal-header cart-header">
+                    <h5 class="modal-title cart-title" id="cartModalLabel">Корзина</h5>
+                </div>
+                <div class="modal-body cart-body">
+                    <p>Загрузка корзины...</p>
+                </div>
+                <div class="modal-footer cart-footer">
+                    <button type="button" class="btn btn-primary mt-3" onclick="window.location.href='@Url.Action("Checkout", "Order")'">
+                        Оформить заказ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+@* } *@
+
+
+

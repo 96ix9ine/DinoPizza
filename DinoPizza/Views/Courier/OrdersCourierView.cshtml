@@ -1,0 +1,51 @@
+﻿@model IEnumerable<DinoPizza.Models.Order>
+@using Newtonsoft.Json
+
+<h2>Мои заказы</h2>
+
+<table>
+    <tr>
+        <th>Клиент</th>
+        <th>Адрес</th>
+        <th>Детали</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.CustomerName</td>
+            <td>@order.Address</td>
+            <td>
+                @if (!string.IsNullOrEmpty(order.OrderDetails))
+                {
+                    // Десериализуем OrderDetails в список OrderProduct
+                    var orderProducts = JsonConvert.DeserializeObject<List<OrderProduct>>(order.OrderDetails);
+
+                    <ul>
+                        @foreach (var product in orderProducts)
+                        {
+                            <li>
+                                <strong>@product.Product.Name</strong> - @product.Quantity x @product.Product.Price руб.
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <span>Детали заказа недоступны</span>
+                }
+            </td>
+            <td>@order.Status</td>
+            <td>
+                @if (order.Status == DinoPizza.Models.OrderStatus.InProgress)
+                {
+                    <form method="post" action="@Url.Action("CompleteOrder", "Courier")">
+                        @Html.Hidden("orderId", order.Id)
+                        <button type="submit">Завершить</button>
+                    </form>
+                }
+            </td>
+        </tr>
+    }
+</table>

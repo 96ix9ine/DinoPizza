@@ -1,0 +1,465 @@
+﻿.btn-group > .btn:not(:first-child) {
+    border-top-right-radius: 9999px !important;
+    border-bottom-right-radius: 9999px !important;
+    border-top-left-radius: 9999px !important;
+    border-bottom-left-radius: 9999px !important;
+}
+
+/*---------------------------------header----------------------------------*/
+/*---------right----------*/
+.order-header {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 24px 0px 16px;
+    z-index: 100;
+    width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.order-header .right {
+    display: flex;
+    column-gap: 32px;
+    -webkit-box-align: center;
+    align-items: center;
+}
+
+.order-ul-el {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    white-space: nowrap;
+}
+.order-ul-el .header__ordering-steps-item{
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 164px;
+    text-align: center;
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+.order-ul-el .header__ordering-steps-item_success::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 16px;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(175, 175, 175);
+    background-image: repeating-linear-gradient(90deg, rgb(175, 175, 175), rgb(175, 175, 175) 2px, rgb(255, 255, 255) 3px, rgb(255, 255, 255) 8px);
+}
+.order-ul-el .header__ordering-steps-item_success::before {
+    background-color: rgb(64, 64, 64);
+    background-image: none;
+}
+.order-ul-el .header__ordering-steps-item_current::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 16px;
+    width: 100%;
+    height: 1px;
+    background-color: rgb(175, 175, 175);
+    background-image: repeating-linear-gradient(90deg, rgb(175, 175, 175), rgb(175, 175, 175) 2px, rgb(255, 255, 255) 3px, rgb(255, 255, 255) 8px);
+}
+.order-ul-el .header__ordering-steps-bubble {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    width: 32px;
+    height: 32px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgb(255, 255, 255) 0px 0px 0px 4px;
+    border: 1px solid rgb(216, 216, 216);
+    border-radius: 50%;
+}
+.order-ul-el .header__ordering-steps-item_success .header__ordering-steps-bubble, .order-ul-el .header__ordering-steps-item_current .header__ordering-steps-bubble {
+    border-color: rgb(64, 64, 64);
+}
+.order-ul-el .header__ordering-steps-value {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: auto;
+    fill: rgb(175, 175, 175);
+}
+.order-ul-el .header__ordering-steps-value_success {
+    margin: -6px 0px 0px -5px;
+}
+.order-ul-el .header__ordering-steps-value_2 {
+    margin: -7px 0px 0px -5px;
+}
+.order-ul-el .header__ordering-steps-value_3 {
+    margin: -7px 0px 0px -5px;
+}
+.order-ul-el .header__ordering-steps-item_success .header__ordering-steps-value, .order-ul-el .header__ordering-steps-item_current .header__ordering-steps-value {
+    fill: rgb(0, 0, 0);
+}
+.order-ul-el .header__ordering-steps-label {
+    display: block;
+    max-width: 140px;
+    margin: 4px auto 0px;
+    color: rgb(175, 175, 175);
+    font-size: 14px;
+    line-height: 1;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    white-space: normal;
+}
+.order-ul-el .header__ordering-steps-item_success .header__ordering-steps-label, .order-ul-el .header__ordering-steps-item_current .header__ordering-steps-label {
+    color: rgb(0, 0, 0);
+}
+/*---------right----------*/
+
+/*---------left-----------*/
+
+.order-header .left {
+    display: flex;
+}
+.order-header .left > :nth-child(n) {
+    margin-right: 40px;
+}
+.order-left-div {
+    display: flex;
+    flex-direction: column;
+}
+.order-left-div-container {
+    display: block;
+    width: 250px;
+    font-size: 0px;
+    line-height: 0;
+    font-style: normal;
+}
+.order-left-div-logo {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 600;
+    color: rgb(255, 105, 0);
+}
+.order-left-div-advanced {
+    font-size: 12px;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 600;
+    margin-left: 49px;
+}
+.left-advanced-text {
+    line-height: 14px;
+}
+.left-advanced-a {
+    color: rgb(255, 105, 0);
+    line-height: 14px;
+    text-decoration: none;
+}
+    /*---------------------------------header----------------------------------*/
+    .order-container {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    align-items: center;
+    justify-content: center;
+    width: 95vw;
+    height: 95vh;
+    border-radius: 30px;
+}
+
+.order-main {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 100%;
+}
+
+.order-group {
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.order-group-name {
+    width: 50%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.order-btn-group {
+    width: 100%;
+}
+
+.order-btn {
+    margin: 0 4px !important;
+}
+.order-buttons-group {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.order-buttons-btn {
+    width: 200px;
+    border-radius: 30px;
+    height: 45px;
+    margin: 0 5% !important;
+}
+.btn-cart {
+    border: none;
+    background-color: rgb(243, 243, 247);
+    color: rgb(92, 99, 112);
+}
+.btn-checkout {
+    width: 300px;
+    background-color: rgb(255, 105, 0);
+    color: rgb(255, 255, 255);
+}
+.btn-checkout:hover {
+    border-color: none;
+    background-color: rgb(235 97 0);
+    color: rgb(255, 255, 255);
+}
+
+.order-checkout {
+    height: 80vh;
+    padding-top: 70px;
+    top: -40px;
+    padding-bottom: 70px;
+    position: sticky;
+    right: 0px;
+}
+.order-checkout-container-main {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100%;
+    box-shadow: rgba(6, 5, 50, 0.1) 0px 6px 20px;
+    align-items: center;
+    border-radius: 30px;
+}
+.order-checkout-container {
+    width: 100%;
+    height: 80%;
+    overflow-y: scroll;
+    margin-top: 5%;
+}
+.order-product-tr {
+    padding: 6px 20px;
+}
+.order-checkout-title {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 18px;
+    padding: 32px 0px 0px 32px;
+}
+.order-checkout-product-name {
+    width: 45%;
+}
+.order-checkout-section {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    color: rgb(0, 0, 0);
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 15% 0;
+}
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+}
+
+.saved-addresses-container {
+    margin-top: 20px;
+    width: 80%;
+}
+#addressModal .modal-content {
+    border-radius: 30px; /* Округление углов */
+    overflow: hidden; /* Для контроля границ */
+    height: 50vh;
+    width: 45vw;
+}
+
+/* Центровка заголовка и расположение кнопки Close */
+#addressModal .modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-bottom: none; /* Убираем стандартную линию разделения */
+    padding: 1rem;
+}
+
+#addressModal .modal-header .btn-close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+/* Заголовок стиля */
+#addressModal .modal-header .modal-title {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+/* Стили для address-body */
+#addressModal .modal-body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 0.5rem 1rem;
+    position: relative;
+}
+
+/* Мягкая белая дымка сверху и снизу */
+#addressModal .modal-body:before,
+#addressModal .modal-body:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+#addressModal .modal-body:before {
+    top: 0;
+}
+
+#addressModal .modal-body:after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+}
+
+/* Стили для футера */
+#addressModal .modal-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding: 1rem;
+    border-top: none; /* Убираем стандартную линию разделения */
+}
+
+#addressModal .modal-footer .address-footer-button,
+#addressModal .modal-footer .address-footer-button-select {
+    flex: 1; /* Заставляем кнопки растягиваться на всю доступную ширину */
+    height: 45px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 9999px;
+    margin: 0 !important;
+}
+.address-footer-button-select {
+    background-color: rgb(255, 105, 0);
+    color: rgb(255, 255, 255);
+}
+.address-footer-button-select:hover {
+    background-color: rgb(232, 97, 0);
+    color: rgb(255, 255, 255);
+}
+.address-footer-button-select:disabled {
+    background-color: #535353 !important;
+}
+.address-footer-button {
+    background-color: rgb(255, 240, 230);
+    color: rgb(209, 87, 0);
+    transition: all 0.3s ease-in-out;
+}
+.address-footer-button:hover {
+    background-color: rgb(255 219 196);
+    color: rgb(209, 87, 0);
+    transition: all 0.3s ease-in-out;
+}
+.address-footer-button:focus,
+.address-footer-button:active {
+    background-color: rgb(255, 240, 230);
+    transition: all 0.3s ease-in-out;
+}
+.address-button {
+    outline: 1px solid gray;
+    margin: 1%;
+    box-shadow: none;
+    height: 60px;
+}
+
+.address-item {
+    height: 60px;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+.address-item:hover,
+.address-item.active {
+    border: 2px solid rgb(255, 105, 0);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/* Новый стиль для всех инпутов с одинаковой шириной и отступами */
+.order-group .form-control {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Стиль для контейнера с адресом и кнопкой "Изменить" */
+.address-container {
+    width: 100%;
+    position: relative;
+}
+
+.address-input {
+    width: 100%;
+    height: 45px;
+    padding-right: 100px; /* Отступ для кнопки */
+    box-sizing: border-box;
+    resize: vertical; /* Разрешаем перенос текста */
+}
+
+.address-btn {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-67%);
+    padding: 0 15px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgb(255, 105, 0);
+}
+
+/* Стиль для кнопки "Изменить" */
+.btn-primary.address-btn {
+    width: auto;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* Увеличиваем высоту инпутов и добавляем перенос строк */
+.order-group .form-control {
+    height: 45px; /* Больше по высоте */
+    resize: vertical; /* Разрешаем перенос текста */
+}
+
+.order-group .form-control:focus {
+    box-shadow: none; /* Убираем тень на фокусе */
+    border-color: #007bff; /* Цвет рамки на фокусе */
+}

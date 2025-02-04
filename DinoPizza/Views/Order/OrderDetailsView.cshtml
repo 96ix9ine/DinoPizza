@@ -1,0 +1,55 @@
+﻿@using Newtonsoft.Json
+@model DinoPizza.Models.Order
+
+<div class="container mt-5" style="background-color: white; padding: 20px; border-radius: 8px;">
+    <h2 class="text-center mb-4">Детали заказа</h2>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <p><strong>Заказ ID:</strong> @Model.Id</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Имя клиента:</strong> @Model.CustomerName</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <p><strong>Адрес:</strong> @Model.Address</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Время заказа:</strong> @Model.OrderTime</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <p><strong>Время доставки:</strong> @Model.DeliveryTime</p>
+        </div>
+        <div class="col-md-6">
+            <p><strong>Метод оплаты:</strong> @Model.PaymentMethod</p>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <p><strong>Ваш курьер:</strong> @Model.Courier.Name</p>
+        </div>
+    </div>
+
+    <h3 class="text-center mb-4">Товары</h3>
+    <ul class="list-group">
+        @foreach (var product in ViewBag.OrderProducts as List<OrderProduct>)
+        {
+            <li class="list-group-item">
+                <strong>@product.Product.Name</strong> - @product.Quantity x @product.Product.Price руб.
+                <br />
+                <span>@product.Product.Description</span> <!-- Описание товара -->
+            </li>
+        }
+    </ul>
+
+    <div class="text-center mt-4">
+        <button type="button" onclick="window.location.href='/'" class="btn btn-secondary">Назад</button>
+    </div>
+</div>

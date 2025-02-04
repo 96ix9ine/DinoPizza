@@ -1,0 +1,64 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="row form-rules">
+    <div class="form-container col-md-4">
+        <section>
+            <form id="account" method="post">
+                <h2>Используйте свои данные для входа</h2>
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                <div class="form-input form-floating mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                    <label asp-for="Input.Email" class="form-label">Эл. почта</label>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <div class="form-input form-floating mb-3">
+                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <label asp-for="Input.Password" class="form-label">Пароль</label>
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+                <div class="checkbox mb-3">
+                    <label asp-for="Input.RememberMe" class="form-checkbox form-label">
+                        <input class="form-check-input" asp-for="Input.RememberMe" />
+                        Запомнить меня
+                    </label>
+                </div>
+                <div class="form-button">
+                    <button id="login-submit" type="submit" class="button w-100 btn btn-lg btn-primary">Войти</button>
+                </div>
+                <div class="form-advanced">
+                    <p>
+                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Зарегистрироваться</a>
+                    </p>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Фоновая анимация с использованием anime.js
+            anime({
+                targets: '.form-rules',
+                easing: 'easeInOutSine',
+                backgroundPosition: ['0% 50%', '100% 50%'], // Анимация позиции градиента
+                duration: 10000,
+                loop: true,
+                direction: 'alternate' // Движение туда-обратно
+            });
+        });
+    </script>
+
+
+}
+

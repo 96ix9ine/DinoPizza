@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DinoPizza.Models.Order>
+
+<h2>Архив заказов</h2>
+
+<table>
+    <tr>
+        <th>Клиент</th>
+        <th>Адрес</th>
+        <th>Детали</th>
+        <th>Статус</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.CustomerName</td>
+            <td>@order.Address</td>
+            <td>@order.OrderDetails</td>
+            <td>@order.Status</td>
+        </tr>
+    }
+</table>
+
+<div>
+    <a asp-action="Index">Назад к списку</a>
+</div>

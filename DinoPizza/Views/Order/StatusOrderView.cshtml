@@ -1,0 +1,25 @@
+﻿@model IEnumerable<DinoPizza.Models.Order>
+
+<h2>Заказы клиента: @ViewBag.ClientName</h2>
+
+<table>
+    <tr>
+        <th>Адрес</th>
+        <th>Время заказа</th>
+        <th>Детали заказа</th>
+        <th>Статус</th>
+        <th>Действия</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.Address</td>
+            <td>@order.OrderTime.ToString("g")</td>
+            <td>@order.OrderDetails</td>
+            <td>@order.Status</td>
+            <td>
+                <a asp-action="OrderDetailsView" asp-route-orderId="@order.Id">Подробнее</a>
+            </td>
+        </tr>
+    }
+</table>

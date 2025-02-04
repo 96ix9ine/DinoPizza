@@ -1,0 +1,94 @@
+﻿@model IEnumerable<DinoPizza.Models.UserSimpleModel>
+
+@{
+    ViewData["Title"] = "Управление пользователями";
+}
+
+<h4>@ViewData["Title"]</h4>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                Роли
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var roleName in item.RolesList)
+                        {
+                            <li>@roleName</li>
+                        }
+                </ul>
+            </td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-outline-primary" asp-route-userId="@item.UserId" asp-controller="Admin" asp-action="EditUsersView">Изменить</a>
+                        <button class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"
+                                data-userid="@item.UserId" data-username="@item.UserName">
+                            Удалить
+                        </button>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Подтверждение удаления</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите удалить пользователя <strong id="usernamePlaceholder"></strong>?
+            </div>
+            <div class="modal-footer">
+                <form id="deleteForm" method="post" action="@Url.Action("RemoveUsersView", "Admin")">
+                    <input type="hidden" name="UserId" id="userIdInput" value="" />
+                    <button type="submit" class="btn btn-danger">Удалить</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const confirmModal = document.getElementById('confirmModal');
+    confirmModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget; // Кнопка, вызвавшая модальное окно
+        const userId = button.getAttribute('data-userid');
+        const userName = button.getAttribute('data-username');
+
+        // Обновляем модальное окно
+        const usernamePlaceholder = document.getElementById('usernamePlaceholder');
+        const userIdInput = document.getElementById('userIdInput');
+
+        usernamePlaceholder.textContent = userName;
+        userIdInput.value = userId;
+    });
+</script>
+

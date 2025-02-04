@@ -1,0 +1,113 @@
+﻿.fixed-top {
+    background-color: rgba(255, 255, 255, 0.75) !important;
+}
+.fixed-navbar {
+    display: flex;
+    height: 5vh;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: sticky;
+    top: 0px;
+    background-color: rgb(255, 255, 255);
+    z-index: 10;
+    backdrop-filter: blur(20px);
+}
+.fixed-navbar-container {
+    position: relative;
+    width: 1280px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.navbar-logo {
+    display: flex;
+    flex-direction: row;
+    width: 120px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: -150px; /* Скрыт по умолчанию */
+    transform: translateY(-50%);
+    transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0; /* Изначально невидим */
+    pointer-events: none; /* Отключаем клики изначально */
+    z-index: 11;
+}
+
+.logo-visible {
+    left: 10px; /* Логотип появляется плавно */
+    opacity: 1; /* Становится видимым */
+    pointer-events: auto; /* Включаем клики */
+}
+
+.logo-hidden {
+    left: -150px; /* Скрытое положение */
+    opacity: 0; /* Невидимый */
+    pointer-events: none; /* Нельзя кликнуть */
+}
+
+
+
+/*-------------------------------------------------------------------------------------------------------*/
+
+.category-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+.category-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.category-item {
+    flex: 1;
+    text-align: center;
+    width: 6vw;
+    height: 40px;
+    transition: background-color 0.3s, color 0.3s;  
+}
+
+    .category-item a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: black;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 1;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s ease-in-out;
+    }
+
+.category-item a:hover {
+    color: rgb(255, 105, 0);
+    transition: all 0.3s ease-in-out;
+}
+
+.category-item.active {
+    color: white;
+}
+
+.category-item.inactive a {
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .category-list {
+        flex-direction: column;
+    }
+
+    .category-item {
+        text-align: left;
+    }
+}

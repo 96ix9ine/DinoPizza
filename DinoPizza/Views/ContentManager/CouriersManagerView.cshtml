@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DinoPizza.Models.Courier>
+
+<h2>Список курьеров</h2>
+
+<table>
+    <tr>
+        <th>Имя</th>
+        <th>Статус</th>
+        <th>Заказы</th>
+    </tr>
+    @foreach (var courier in Model)
+    {
+        <tr>
+            <td>@courier.Name</td>
+            <td>@(courier.IsAvailable ? "Свободен" : "В работе")</td>
+            <td>@(courier.Orders?.Count ?? 0)</td>
+        </tr>
+    }
+</table>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

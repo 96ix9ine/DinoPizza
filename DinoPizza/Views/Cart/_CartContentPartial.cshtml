@@ -1,0 +1,55 @@
+﻿@model DinoPizza.Models.Cart
+
+@if (Model != null && Model.Records.Any())
+{
+    <table class="table table-hover">
+        <tbody>
+            @foreach (var item in Model.Records)
+            {
+                <tr class="product-tr">
+                    <td class="product-td">
+                        <div class="product-main">
+                            <div class="product-container">
+                                <div class="product-image">
+                                    <div class="product-image-img">
+                                        <img src="~/FileStorage/ProductImages/@item.Product.ImageSrc" alt="@item.Product.Name" width="50" height="50" />
+                                    </div>
+                                </div>
+                                <div class="product-name">@item.Product.Name</div>
+                            </div>
+                            <hr />
+                            <div class="product-edit">
+                                <div class="product-cost">@item.Cost.ToString("c", new System.Globalization.CultureInfo("ru-RU"))</div>
+                                <div class="product-quantity-controls">
+                                    <div class="product-button-group btn-group" role="group" style="align-items: center;">
+                                        <form id="form-remove-@item.Product.Id" asp-controller="Cart" asp-action="RemoveItem" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.Product.Id" />
+                                            <button class="product-button btn btn-outline-danger btn-remove-item" type="submit">
+                                                <i class="bi bi-dash"></i>
+                                            </button>
+                                        </form>
+                                        <span class="product-quantity" id="quantity-@item.Product.Id">@item.Quantity</span>
+                                        <form id="form-add-@item.Product.Id" asp-controller="Cart" asp-action="AddItem" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.Product.Id" />
+                                            <button class="product-button btn btn-outline-success btn-add-item" type="submit">
+                                                <i class="bi bi-plus"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="cart-empty-container">
+        <img class="cart-empty-img" src="~/FileStorage/Christmas/5aa5dac99a832c62f3ef..svg" />
+        <p class="cart-empty-p1">Пока тут пусто</p>
+        <p class="cart-empty-p2">Добавьте пиццу. Или две!.</p>
+    </div>
+}

@@ -1,0 +1,24 @@
+﻿@model List<DinoPizza.Models.CategoryModel>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<link href="~/css/Category.css" rel="stylesheet" />
+
+<div class="category-container">
+    <ul class="category-list">
+        @foreach (var category in Model)
+        {
+            var isActive = category.CategoryId == (long?)ViewData["ActiveCategoryId"];
+            var itemClass = isActive ? "category-item active" : "category-item";
+            <li class="@itemClass">
+                <a href="@Url.Action("Products", "CategoryProduct", new { categoryId = category.CategoryId })">
+                    @category.NameRus
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+

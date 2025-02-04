@@ -1,0 +1,18 @@
+﻿@model DinoPizza.Models.CheckBoxItem
+
+@Html.CheckBoxFor(m => m.IsChecked,
+        new
+        {
+            @class = "btn-check",
+            @id = "btn-check-outlined-" + Model.Id
+        })
+
+@Html.LabelFor(m => m.Name, Model.Name,
+        new
+        {
+            @class = "btn btn-outline-primary",
+            @for = "btn-check-outlined-" + Model.Id
+        })
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.Name)

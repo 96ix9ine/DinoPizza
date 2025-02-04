@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DinoPizza.Models.Order>
+
+<h2>Архив заказов</h2>
+
+<form method="get">
+    <label>Фильтр по статусу:</label>
+    <select name="status">
+        <option value="">Все</option>
+        @foreach (var status in Enum.GetValues(typeof(DinoPizza.Models.OrderStatus)))
+        {
+            <option value="@status">@status</option>
+        }
+    </select>
+    <button type="submit">Применить</button>
+</form>
+
+<table>
+    <tr>
+        <th>Клиент</th>
+        <th>Адрес</th>
+        <th>Статус</th>
+        <th>Курьер</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+        <tr>
+            <td>@order.CustomerName</td>
+            <td>@order.Address</td>
+            <td>@order.Status</td>
+            <td>@(order.Courier != null ? order.Courier.Name : "Нет")</td>
+        </tr>
+    }
+</table>

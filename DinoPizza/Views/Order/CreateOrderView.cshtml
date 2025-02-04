@@ -1,0 +1,47 @@
+﻿@model DinoPizza.Models.Order
+
+@{
+    ViewData["Title"] = "Создание заказа";
+}
+
+<h2>Создание заказа</h2>
+
+@using (Html.BeginForm("CreateOrderView", "Order", FormMethod.Post))
+{
+    <div>
+        <label>Выберите клиента:</label>
+        @Html.DropDownListFor(
+                m => m.ClientId,
+                new SelectList(ViewBag.Clients, "ClientId", "Name"),
+                "-- Выберите клиента --",
+                new { @class = "form-control" }
+                )
+        @Html.ValidationMessageFor(m => m.ClientId)
+    </div>
+    <div>
+        <label>Имя:</label>
+        @Html.TextBoxFor(m => m.CustomerName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.CustomerName)
+    </div>
+    <div>
+        <label>Адрес:</label>
+        @Html.TextBoxFor(m => m.Address, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Address)
+    </div>
+    <div>
+        <label>Детали заказа:</label>
+        @Html.TextAreaFor(m => m.OrderDetails, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.OrderDetails)
+    </div>
+    <button type="submit" class="btn btn-primary">Оформить заказ</button>
+}
+
+<div>
+    <a asp-action="Index">Вернуться к списку</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

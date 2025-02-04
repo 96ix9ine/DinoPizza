@@ -1,0 +1,140 @@
+﻿@using DinoPizza.Authorize
+@model DinoPizza.Models.ProductEditModel
+
+@{
+    ViewData["Title"] = "Редактирование товара";
+}
+
+<h4>@ViewData["Title"]</h4>
+<hr />
+<div>
+    <!-- Для передачи КАРТИНОК обязательно enctype="multipart/form-data" -->
+    <form enctype="multipart/form-data"
+          class="row"
+          method="post"
+          asp-controller="ContentManager"
+          asp-action="ProductEditView">
+
+        <div class="col-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label>Категория:</label>
+                <select id="SelectCategory" name="SelectedCategoryId">
+                    @foreach (var item in Model.CategoriesList)
+                    {
+                        if (item.Selected)
+                        {
+                            <option value="@item.Value" selected>@item.Text</option>
+                        }
+                        else
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    }
+                </select>
+            </div>
+
+            <input type="hidden"
+                   name="returnUrl"
+                   value="@Model.ReturnUrl" />
+
+            <div class="form-group">
+                <label asp-for="ProductId" class="control-label"></label>
+                <input readonly asp-for="ProductId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            @if (User.CanEditProductPrice())
+            {
+                <div class="form-group">
+                    <label asp-for="Price" class="control-label"></label>
+                    <input asp-for="Price" class="form-control" />
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="Article" class="control-label"></label>
+                <input asp-for="Article" class="form-control" />
+                <span asp-validation-for="Article" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea asp-for="Description" class="form-control"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit"
+                       value="Сохранить"
+                       class="btn btn-primary" />
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="form-group">
+                <img id="ShowImage"
+                     width="400"
+                     src="~/@Model.ImageSrc"
+                     alt="Текущее изображение" />
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageUrl" class="control-label"></label>
+                <input readonly asp-for="ImageUrl" class="form-control" />
+            </div>
+            <input type="file"
+                   data-val="false"
+                   asp-for="FileImage"
+                   accept="image/*" />
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $(document).ready(function(){
+            onSelectCategory();
+
+            //обработчик события выбор категорий
+            $('#SelectCategory').change(function () {
+                onSelectCategory();
+            });
+
+            function onSelectCategory(){
+                var valueId = $('#SelectCategory').val();
+                //alert(value);
+                //прячем все селекты с классом
+                $('.SubCategoryClass').hide();
+                //отключаем спрятанные
+                $('.SubCategoryClass').attr('disabled', 'disabled');
+                //показываем только один
+                $('#category-' + valueId).show();
+                //видимый, снять disabled
+                $('#category-' + valueId).removeAttr('disabled');
+            }
+
+            // обработчик события на выбор новой картинки
+            $('#FileImage').change(function () {
+                LoadImage(this);
+            });
+
+            function LoadImage(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#ShowImage').attr('src', e.target.result)
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        });
+    </script>
+}

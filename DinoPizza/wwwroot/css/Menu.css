@@ -1,0 +1,225 @@
+﻿/* Добавление фона и декоративных элементов */
+.menu-container {
+    display: flex;
+    width: 80vw;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    margin-top: 5%;
+    position: relative;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: 270px 270px 270px 270px;
+    gap: 30px;
+    justify-items: center;
+}
+
+.menu-item {
+    position: relative !important;
+    width: 100%;
+    border-radius: 10px;
+    margin: 10% 0;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: left;
+    cursor: pointer;
+    background: rgb(255, 255, 255);
+    border: 3px solid #ff5757;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 3;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Стилизуем карточки меню */
+.menu-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.menu-item h4 {
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.menu-item-price {
+    margin: 0;
+    font-size: 20px !important;
+    font-weight: bold;
+}
+
+.menu-item p {
+    font-size: 14px;
+    color: #333;
+}
+
+
+
+.menu-item .price-button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    text-align: center;
+}
+
+.img-shar {
+    position: absolute;
+    width: 35% !important;
+    transform: translateX(205px) translateY(25px);
+}
+.img-colpak {
+    position: absolute;
+    width: 40% !important;
+    transform: translateX(-65px) translateY(-80px);
+}
+
+.modal img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.modal-dialog {
+    margin: auto 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: none;
+}
+
+.modal-content {
+    width: 60vw;
+    height: auto;
+    margin: 0 auto;
+    border: none;
+    border-radius: 9999px;
+}
+
+.modal-body {
+    padding: 0 !important;
+}
+
+.modal-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 55%;
+    padding: 1rem;
+}
+.modal-img img {
+    width: 55% !important;
+    height: auto;
+}
+
+.modal-description {
+    padding: 2rem !important;
+    background: rgb(252, 252, 252);
+    width: auto;
+    text-align: left;
+    border-radius: 20px;
+}
+.modal-h5 {
+    font-size: 24px;
+    line-height: 28px;
+    font-family: Dodo, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 500;
+    margin: 0px;
+}
+modal-p {
+    font-size: 14px;
+    line-height: 20px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-weight: 400;
+}
+
+.btn-item {
+    max-width: 60%;
+    min-width: 120px;
+    height: auto;
+    min-height: 40px;
+    border-radius: 9999px;
+    border: none;
+    background-color: rgb(255, 240, 230);
+    color: rgb(209, 87, 0);
+    font-weight: 500;
+    overflow-wrap: normal;
+    transition: all 0.2s ease-out;
+}
+
+.btn-item:hover {
+    background-color: rgb(242, 187, 150);
+    color: rgb(209, 87, 0);
+    transition: all 0.2s ease-out;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+    background: rgb(243, 243, 247);
+    border-radius: 9999px;
+    padding: 5px;
+    border-top-right-radius: 9999px !important;
+    border-bottom-right-radius: 9999px !important;
+    border-top-left-radius: 9999px !important;
+    border-bottom-left-radius: 9999px !important;
+}
+.btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    border-top-right-radius: 9999px !important;
+    border-bottom-right-radius: 9999px !important;
+}
+
+.btn-group>.btn:not(:first-child) {
+    border-top-left-radius: 9999px !important;
+    border-bottom-left-radius: 9999px !important;
+}
+
+    .btn-group .btn-toggle {
+        background-color: transparent;
+    border: none;
+    border-radius: 9999px;
+    color: #333;
+    margin: 0;
+    padding: 10px 15px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+    .btn-group .btn-check:checked + .btn-toggle {
+        background-color: #ffffff;
+        color: #000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-group .btn-toggle:hover {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+@media (max-width: 1320px) {
+    .modal-img img {
+        width: 65% !important;
+        height: auto;
+    }
+    .d-flex {
+        height: 45vh;
+    }
+    .modal-description {
+        padding: 1rem !important;
+    }
+}

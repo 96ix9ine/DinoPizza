@@ -1,0 +1,66 @@
+﻿@model DinoPizza.Models.OrdersListModel
+
+<h2>Активные заказы</h2>
+
+<form method="post" action="@Url.Action("SaveOrderStatuses", "Manager")">
+    <table>
+        <thead>
+            <tr>
+                <th>Клиент</th>
+                <th>Наименование</th>
+                <th>Адрес</th>
+                <th>Детали</th>
+                <th>Статус</th>
+                <th>Время</th>
+                <th>Курьер</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Orders.Count(); i++)
+            {
+                var order = Model.Orders.ElementAt(i);
+                <tr>
+                    <td>@order.Client</td>
+                    <td>@order.CustomerName</td>
+                    <td>@order.Address</td>
+                    <td>@order.OrderDetails</td>
+                    <td>
+                        <!-- Скрытое поле для передачи ID заказа -->
+                        <input type="hidden" name="Orders[@i].Id" value="@order.Id" />
+                        <!-- Выпадающий список для выбора статуса -->
+                        <select name="Orders[@i].Status" class="form-control">
+                            @foreach (var status in Enum.GetValues(typeof(DinoPizza.Models.OrderStatus)).Cast<DinoPizza.Models.OrderStatus>())
+                            {
+                                <option value="@status" selected="@(order.Status == status)">
+                                    @status
+                                </option>
+                            }
+                        </select>
+                    </td>
+                    <td>@order.OrderTime</td>
+                    <td>@(order.Courier != null ? order.Courier.Name : "Не назначен")</td>
+                    <td>
+                        @if (order.Status == DinoPizza.Models.OrderStatus.Pending)
+                        {
+                            <form method="post" action="@Url.Action("AssignCourier", "Manager")">
+                                <input type="hidden" name="orderId" value="@order.Id" />
+                                <select name="courierId">
+                                    @foreach (var courier in Model.AvailableCouriers)
+                                    {
+                                        <option value="@courier.Id" selected="@(order.CourierId == courier.Id)">
+                                            @courier.Name
+                                        </option>
+                                    }
+                                </select>
+                                <button type="submit">Назначить курьера</button>
+                            </form>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+</form>

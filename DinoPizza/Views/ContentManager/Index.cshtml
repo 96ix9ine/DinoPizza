@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Управление контентом";
+}
+
+<h3>@ViewData["Title"]</h3>
+<div>
+    <a asp-controller="ContentManager" asp-action="CreateProductView" class="btn btn-outline-primary">
+        Добавить Новый товар
+    </a>
+</div>
+
+<div>
+    <a asp-controller="ContentManager" asp-action="ManageCategoriesView" class="btn btn-outline-primary">
+        Управление категориями
+    </a>
+</div>
+
+<div>
+    <a asp-controller="ContentManager" asp-action="IndexManagerView" class="btn btn-outline-primary">
+        Активные заказы
+    </a>
+</div>
+
+<div>
+    <a asp-controller="ContentManager" asp-action="CouriersManagerView" class="btn btn-outline-primary">
+        Курьеры
+    </a>
+</div>
+
+<div>
+    <a asp-controller="ContentManager" asp-action="ArchiveManagerView" class="btn btn-outline-primary">
+        Архив заказов
+    </a>
+</div>
+
+<div>
+    <a asp-controller="ContentManager" asp-action="IndexClientView" class="btn btn-outline-primary">
+        Список клиентов
+    </a>
+</div>

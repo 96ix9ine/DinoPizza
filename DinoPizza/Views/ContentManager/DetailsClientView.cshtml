@@ -1,0 +1,10 @@
+﻿@model DinoPizza.Models.ClientModel
+
+<h2>Детали клиента</h2>
+<div>
+    <p><strong>Имя:</strong> @Model.FirstName</p>
+    <p><strong>Телефон:</strong> @Model.PhoneNumber</p>
+    <p><strong>Адрес:</strong> @Model.Address</p>
+    <p><strong>Email:</strong> @Model.Email</p>
+</div>
+<a asp-action="Index" class="btn btn-primary">Назад к списку</a>

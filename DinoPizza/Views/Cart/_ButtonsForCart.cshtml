@@ -1,0 +1,23 @@
+﻿@model long
+
+<div class="btn-group me-2" role="group">
+    <a class="btn btn-outline-success"
+       asp-controller="Cart"
+       asp-action="RemoveItem"
+       asp-route-id="@Model">
+        <i class="bi bi-arrow-down"></i>
+    </a>
+    <a class="btn btn-outline-danger"
+       asp-controller="Cart"
+       asp-action="RemoveRecord"
+       asp-route-id="@Model">
+        <i class="bi bi-x"></i>
+    </a>
+    <a class="btn btn-outline-success"
+       asp-controller="Cart"
+       asp-action="AddItem"
+       asp-route-id="@Model">
+        <i class="bi bi-arrow-up"></i>
+    </a>
+</div>
+

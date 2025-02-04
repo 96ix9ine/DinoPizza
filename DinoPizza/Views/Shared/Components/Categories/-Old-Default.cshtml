@@ -1,0 +1,13 @@
+﻿@model IEnumerable<DinoPizza.Models.CategoryModel>
+
+<div class="list-group">
+    @foreach (var item in Model)
+    {
+        <a asp-controller="Products"
+           asp-action="ProductsInCategory"
+           asp-route-categoryId="@item.CategoryId"
+           class="list-group-item list-group-item-action">
+            @item.NameRus
+        </a>
+    }
+</div>
